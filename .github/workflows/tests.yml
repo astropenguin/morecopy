@@ -16,20 +16,19 @@ jobs:
       matrix:
         python-version: ["3.7", "3.8", "3.9", "3.10"]
     env:
-      TESTED_DIRS: morecopy tests
+      POETRY_VIRTUALENVS_CREATE: false
+      TARGET_DIRS: morecopy tests
     steps:
       - uses: actions/checkout@v2
-      - name: Setup Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+      - uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
-        run: |
+      - run: |
           pip install poetry
           poetry install
       - name: Test code's formatting (Black)
-        run: poetry run black --check ${TESTED_DIRS}
+        run: black --check ${TARGET_DIRS}
       - name: Test code's style (Flake8)
-        run: poetry run flake8 ${TESTED_DIRS}
+        run: flake8 ${TARGET_DIRS}
       - name: Test code's execution (pytest)
-        run : poetry run pytest -v tests
+        run : pytest -v tests
