@@ -1,0 +1,33 @@
+name: Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  job:
+    name: Test (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
+    env:
+      POETRY_VIRTUALENVS_CREATE: false
+      TARGET_DIRS: morecopy tests
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: pip install poetry && poetry install
+      - name: Test code's formatting (Black)
+        run: black --check ${TARGET_DIRS}
+      - name: Test code's style (Flake8)
+        run: flake8 ${TARGET_DIRS}
+      - name: Test code's execution (pytest)
+        run : pytest -v tests
