@@ -24,3 +24,10 @@ def copier_for(type_: Any) -> Callable[[Copier[T]], Copier[T]]:
 # builtin copiers
 copiers: Dict[Any, Copier[Any]] = {}
 
+
+@copier_for(int)
+@copier_for(float)
+@copier_for(complex)
+def copy_by_repr(obj: T) -> T:
+    """Copy an object by its repr string."""
+    return eval(repr(obj))

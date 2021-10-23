@@ -14,7 +14,11 @@ T = TypeVar("T")
 
 # test data
 test_header = "type_, value"
-test_data = []
+test_data = [
+    (int, 1234567890),
+    (float, 1.234567890),
+    (complex, 1.2345 + 6.7890j),
+]
 
 
 # test functions
