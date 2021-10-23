@@ -21,6 +21,8 @@ test_data = [
     (bytes, b"lorem ipsum"),
     (tuple, (123, 4.56, 7.8e90)),
     (range, range(1234567890)),
+    (slice, slice(1234, 5678, 90)),
+    (frozenset, frozenset({123, 4.56, 7.8e90})),
 ]
 
 

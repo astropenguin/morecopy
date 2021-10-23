@@ -32,6 +32,8 @@ copiers: Dict[Any, Copier[Any]] = {}
 @copier_for(bytes)
 @copier_for(tuple)
 @copier_for(range)
+@copier_for(slice)
+@copier_for(frozenset)
 def copy_by_repr(obj: T) -> T:
     """Copy an object by its repr string."""
     return eval(repr(obj))
