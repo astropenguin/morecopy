@@ -1,5 +1,6 @@
 # standard library
 from copy import copy as stdlib_copy
+from types import FunctionType, LambdaType
 from typing import Type, TypeVar
 
 
@@ -13,6 +14,10 @@ T = TypeVar("T")
 
 
 # test data
+def function(a: int, b: int) -> int:
+    return a + b
+
+
 test_header = "type_, value"
 test_data = [
     (int, 1234567890),
@@ -24,12 +29,17 @@ test_data = [
     (range, range(1234567890)),
     (slice, slice(1234, 5678, 90)),
     (frozenset, frozenset({123, 4.56, 7.8e90})),
+    (FunctionType, function),
+    (LambdaType, lambda a, b: a + b),
 ]
 
 
 # test functions
 @mark.parametrize(test_header, test_data)
 def test_copy_eq(type_: Type[T], value: T) -> None:
+    if type_ is FunctionType:
+        return
+
     assert value == copy(value)
     assert value == stdlib_copy(value)
 
