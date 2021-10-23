@@ -20,7 +20,7 @@ def copy(obj: T) -> T:
     """Copy an object.
 
     Unlike ``copy.copy``, this function even copies an immutable object
-    as a different one if a dedicated copier exists in ``morecopy.copiers``.
+    as a different one if a dedicated copier is defined in the package.
     Otherwise, it is equivalent to ``copy.copy``.
 
     Args:
@@ -50,15 +50,15 @@ def copy(obj: T) -> T:
 
 
 def send_copier(key: Any) -> None:
-    """Send a package copier to the stdlib copiers."""
+    """Send a builtin copier to the stdlib copiers."""
     stdlib_copiers[key] = copiers.pop(key)
 
 
 def recv_copier(key: Any) -> None:
-    """Receive a package copier from the stdlib copiers."""
+    """Receive a builtin copier from the stdlib copiers."""
     copiers[key] = stdlib_copiers.pop(key)
 
 
 def swap_copiers(key: Any) -> None:
-    """Swap copiers in the package and stdlib copiers."""
+    """Swap copiers in the builtin and stdlib copiers."""
     copiers[key], stdlib_copiers[key] = stdlib_copiers[key], copiers[key]

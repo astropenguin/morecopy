@@ -10,15 +10,17 @@ T = TypeVar("T")
 Copier = Callable[[T], T]
 
 
-# package copiers
-copiers: Dict[Any, Copier[Any]] = {}
-
-
+# decorator
 def copier_for(type_: Any) -> Callable[[Copier[T]], Copier[T]]:
-    """Register a copier as one of the package copiers."""
+    """Register a copier as one of the builtin copiers."""
 
     def register(copier: Copier[T]) -> Copier[T]:
         copiers[type_] = copier
         return copier
 
     return register
+
+
+# builtin copiers
+copiers: Dict[Any, Copier[Any]] = {}
+
