@@ -4,6 +4,7 @@
 [![Python](https://img.shields.io/pypi/pyversions/morecopy.svg?label=Python&color=yellow&style=flat-square)](https://pypi.org/project/morecopy/)
 [![Test](https://img.shields.io/github/workflow/status/astropenguin/morecopy/Tests?logo=github&label=Test&style=flat-square)](https://github.com/astropenguin/morecopy/actions)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg?label=License&style=flat-square)](LICENSE)
+[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5594444-blue?style=flat-square)](https://doi.org/10.5281/zenodo.5594444)
 
 Copy even immutable objects as much as possible
 
