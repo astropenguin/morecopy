@@ -18,6 +18,10 @@ test_data = [
     (int, 1234567890),
     (float, 1.234567890),
     (complex, 1.2345 + 6.7890j),
+    (str, "lorem ipsum"),
+    (bytes, b"lorem ipsum"),
+    (tuple, (123, 4.56, 7.8e90)),
+    (range, range(1234567890)),
 ]
 
 

@@ -28,6 +28,10 @@ copiers: Dict[Any, Copier[Any]] = {}
 @copier_for(int)
 @copier_for(float)
 @copier_for(complex)
+@copier_for(str)
+@copier_for(bytes)
+@copier_for(tuple)
+@copier_for(range)
 def copy_by_repr(obj: T) -> T:
     """Copy an object by its repr string."""
     return eval(repr(obj))
