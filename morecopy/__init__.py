@@ -4,8 +4,10 @@ __version__ = "0.1.0"
 
 
 # submodules
+from . import copy as _copy
 from . import copiers as _copiers
 
 
 # aliases
+from .copy import *
 from .copiers import *
