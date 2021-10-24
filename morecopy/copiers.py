@@ -4,12 +4,13 @@ __all__ = ["copier_for"]
 # standard library
 from copy import copy
 from types import FunctionType
-from typing import Any, Callable, Dict, TypeVar
+from typing import Any, Callable, Dict, Iterable, TypeVar
 
 
 # type hints
 T = TypeVar("T")
 FT = TypeVar("FT", bound=FunctionType)
+IT = TypeVar("IT", bound=Iterable)
 Copier = Callable[[T], T]
 
 
@@ -33,13 +34,18 @@ copiers: Dict[Any, Copier[Any]] = {}
 @copier_for(complex)
 @copier_for(str)
 @copier_for(bytes)
-@copier_for(tuple)
 @copier_for(range)
 @copier_for(slice)
-@copier_for(frozenset)
 def copy_by_repr(obj: T) -> T:
-    """Copy an object by its repr string."""
+    """Copy an object by evaluating its repr string."""
     return eval(repr(obj))
+
+
+@copier_for(tuple)
+@copier_for(frozenset)
+def copy_by_type(obj: IT) -> IT:
+    """Copy an object by recreating an object of its type."""
+    return type(obj)(item for item in obj)  # type: ignore
 
 
 @copier_for(FunctionType)
