@@ -49,25 +49,25 @@ def copy_by_type(obj: IT) -> IT:
 
 
 @copier_for(FunctionType)
-def copy_function(function: FT) -> FT:
-    """Copy a function object."""
-    copied = type(function)(
-        function.__code__,
-        function.__globals__,
-        function.__name__,
-        function.__defaults__,
-        function.__closure__,
+def copy_function(obj: FT) -> FT:
+    """Copy a function object by recreating it."""
+    copied = type(obj)(
+        obj.__code__,
+        obj.__globals__,
+        obj.__name__,
+        obj.__defaults__,
+        obj.__closure__,
     )
 
     # mutable objects are copied.
-    copied.__annotations__ = copy(function.__annotations__)
-    copied.__dict__ = copy(function.__dict__)
-    copied.__kwdefaults__ = copy(function.__kwdefaults__)
+    copied.__annotations__ = copy(obj.__annotations__)
+    copied.__dict__ = copy(obj.__dict__)
+    copied.__kwdefaults__ = copy(obj.__kwdefaults__)
 
     # immutable objects are just assigned.
-    copied.__doc__ = function.__doc__
-    copied.__module__ = function.__module__
-    copied.__name__ = function.__name__
-    copied.__qualname__ = function.__qualname__
+    copied.__doc__ = obj.__doc__
+    copied.__module__ = obj.__module__
+    copied.__name__ = obj.__name__
+    copied.__qualname__ = obj.__qualname__
 
     return copied
