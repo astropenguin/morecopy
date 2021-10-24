@@ -4,7 +4,7 @@ __all__ = ["copy"]
 # standard library
 from copy import copy as stdlib_copy
 from copy import _copy_dispatch as stdlib_copiers  # type: ignore
-from typing import Any, TypeVar
+from typing import TypeVar
 
 
 # submodules
@@ -38,18 +38,3 @@ def copy(obj: T) -> T:
     finally:
         stdlib_copiers.clear()
         stdlib_copiers.update(original)
-
-
-def send_copier(key: Any) -> None:
-    """Send a builtin copier to the stdlib copiers."""
-    stdlib_copiers[key] = copiers.pop(key)
-
-
-def recv_copier(key: Any) -> None:
-    """Receive a builtin copier from the stdlib copiers."""
-    copiers[key] = stdlib_copiers.pop(key)
-
-
-def swap_copiers(key: Any) -> None:
-    """Swap copiers in the builtin and stdlib copiers."""
-    copiers[key], stdlib_copiers[key] = stdlib_copiers[key], copiers[key]
