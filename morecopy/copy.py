@@ -30,23 +30,14 @@ def copy(obj: T) -> T:
         An object copied from the original.
 
     """
-    type_ = type(obj)
+    original = stdlib_copiers.copy()
 
-    if type_ not in copiers:
+    try:
+        stdlib_copiers.update(copiers)
         return stdlib_copy(obj)
-
-    if type_ not in stdlib_copiers:
-        try:
-            send_copier(type_)
-            return stdlib_copy(obj)
-        finally:
-            recv_copier(type_)
-    else:
-        try:
-            swap_copiers(type_)
-            return stdlib_copy(obj)
-        finally:
-            swap_copiers(type_)
+    finally:
+        stdlib_copiers.clear()
+        stdlib_copiers.update(original)
 
 
 def send_copier(key: Any) -> None:
