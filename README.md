@@ -1,10 +1,10 @@
 # morecopy
 
-[![PyPI](https://img.shields.io/pypi/v/morecopy.svg?label=PyPI&style=flat-square)](https://pypi.org/project/morecopy/)
-[![Python](https://img.shields.io/pypi/pyversions/morecopy.svg?label=Python&color=yellow&style=flat-square)](https://pypi.org/project/morecopy/)
-[![Test](https://img.shields.io/github/workflow/status/astropenguin/morecopy/Tests?logo=github&label=Test&style=flat-square)](https://github.com/astropenguin/morecopy/actions)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg?label=License&style=flat-square)](LICENSE)
-[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5594444-blue?style=flat-square)](https://doi.org/10.5281/zenodo.5594444)
+[![Release](https://img.shields.io/pypi/v/morecopy?label=Release&color=cornflowerblue&style=flat-square)](https://pypi.org/project/morecopy/)
+[![Python](https://img.shields.io/pypi/pyversions/morecopy?label=Python&color=cornflowerblue&style=flat-square)](https://pypi.org/project/morecopy/)
+[![Downloads](https://img.shields.io/pypi/dm/morecopy?label=Downloads&color=cornflowerblue&style=flat-square)](https://pepy.tech/project/morecopy)
+[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.5594444-cornflowerblue?style=flat-square)](https://doi.org/10.5281/zenodo.5594444)
+[![Tests](https://img.shields.io/github/actions/workflow/status/astropenguin/morecopy/tests.yml?label=Tests&style=flat-square)](https://github.com/astropenguin/morecopy/actions)
 
 Copy even immutable objects as much as possible
 
@@ -22,6 +22,11 @@ copied = copy(original)
 original == copied # -> True
 original is copied # -> False
 ```
+
+> **Note**
+> In general, there is no need to copy immutable objects, so this package may not be necessary in most cases.
+> Also, some objects may not be copied even with this package:
+> In CPython, for example, integers from -5 to 256 are always uncopied for optimization.
 
 ## Installation
 
