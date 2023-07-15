@@ -6,16 +6,16 @@ keywords = ["copy", "deepcopy"]
 authors = ["Akio Taniguchi <taniguchi@a.phys.nagoya-u.ac.jp>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/astropenguin/morecopy"
+homepage = "https://github.com/astropenguin/morecopy/"
 
 [tool.poetry.dependencies]
-python = ">=3.7, <3.11"
+python = ">=3.8, <3.12"
 
-[tool.poetry.dev-dependencies]
-black = "^21.12b"
-ipython = "^7.30"
-pytest = "^6.2"
+[tool.poetry.group.dev.dependencies]
+black = "^23.7"
+ipython = "^8.12"
+pytest = "^7.4"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
