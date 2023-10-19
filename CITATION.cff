@@ -3,8 +3,8 @@ message: "If you use this software, please cite it as below."
 
 title: "morecopy"
 abstract: "Copy even immutable objects as much as possible"
-version: 0.3.0
-date-released: 2023-07-15
+version: 0.4.0
+date-released: 2023-10-19
 license: "MIT"
 doi: "10.5281/zenodo.5594444"
 url: "https://github.com/astropenguin/morecopy"
