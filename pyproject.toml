@@ -9,10 +9,10 @@ readme = "README.md"
 homepage = "https://github.com/astropenguin/morecopy/"
 
 [tool.poetry.dependencies]
-python = ">=3.8, <3.12"
+python = ">=3.8, <3.13"
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.7"
+black = "^23.10"
 ipython = "^8.12"
 pytest = "^7.4"
 
